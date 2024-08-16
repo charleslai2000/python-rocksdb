@@ -8,3 +8,4 @@ docs/_build
 *.so
 __pycache__
 rocksdb/_rocksdb.cpp
+dist

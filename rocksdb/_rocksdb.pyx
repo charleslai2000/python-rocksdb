@@ -1789,64 +1789,6 @@ cdef class TransactionDBOptions(object):
         def __set__(self, value):
             self.opts.default_write_batch_flush_threshold = value
 
-
-cdef class WriteOptions:
-    cdef options.WriteOptions* opts
-
-    def __cinit__(self):
-        self.opts = new options.WriteOptions()
-
-    def __dealloc__(self):
-        if self.opts is not NULL:
-            del self.opts
-            self.opts = NULL
-
-    def __init__(self, **kwargs):
-        for key, value in kwargs.items():
-            setattr(self, key, value)
-
-    property sync:
-        def __get__(self):
-            return self.opts.sync
-        def __set__(self, value):
-            self.opts.sync = value
-
-    property disableWAL:
-        def __get__(self):
-            return self.opts.disableWAL
-        def __set__(self, value):
-            self.opts.disableWAL = value
-
-    property ignore_missing_column_families:
-        def __get__(self):
-            return self.opts.ignore_missing_column_families
-        def __set__(self, value):
-            self.opts.ignore_missing_column_families = value
-
-    property no_slowdown:
-        def __get__(self):
-            return self.opts.no_slowdown
-        def __set__(self, value):
-            self.opts.no_slowdown = value
-
-    property low_pri:
-        def __get__(self):
-            return self.opts.low_pri
-        def __set__(self, value):
-            self.opts.low_pri = value
-
-    property memtable_insert_hint_per_batch:
-        def __get__(self):
-            return self.opts.memtable_insert_hint_per_batch
-        def __set__(self, value):
-            self.opts.memtable_insert_hint_per_batch = value
-
-    # property timestamp:
-    #     def __get__(self):
-    #         return self.opts.timestamp
-    #     def __set__(self, const Slice* value):
-    #         self.opts.timestamp = value
-
 # Forward declaration
 cdef class Snapshot
 
