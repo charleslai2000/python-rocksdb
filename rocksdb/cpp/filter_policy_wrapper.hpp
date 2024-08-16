@@ -79,6 +79,7 @@ namespace py_rocks {
                 this->info_log = info_log;
             }
 
+	      virtual const char* CompatibilityName() const { return Name(); }
         private:
             string name;
             void* ctx;

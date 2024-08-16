@@ -20,4 +20,4 @@ ctypedef int (*compare_func)(
 cdef extern from "cpp/comparator_wrapper.hpp" namespace "py_rocks":
     cdef cppclass ComparatorWrapper:
         ComparatorWrapper(string, void*, compare_func) nogil except +
-        void set_info_log(shared_ptr[Logger]) nogil except+
+        void set_info_log(shared_ptr[Logger]) except+ nogil

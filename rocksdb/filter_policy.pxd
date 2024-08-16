@@ -7,11 +7,11 @@ from .logger cimport Logger
 
 cdef extern from "rocksdb/filter_policy.h" namespace "rocksdb":
     cdef cppclass FilterPolicy:
-        void CreateFilter(const Slice*, int, string*) nogil except+
-        cpp_bool KeyMayMatch(const Slice&, const Slice&) nogil except+
-        const_char* Name() nogil except+
+        void CreateFilter(const Slice*, int, string*) except+ nogil
+        cpp_bool KeyMayMatch(const Slice&, const Slice&) except+ nogil
+        const_char* Name() except+ nogil
 
-    cdef extern const FilterPolicy* NewBloomFilterPolicy(int) nogil except+
+    cdef extern const FilterPolicy* NewBloomFilterPolicy(int) except+ nogil
 
 ctypedef void (*create_filter_func)(
     void*,
@@ -34,6 +34,6 @@ cdef extern from "cpp/filter_policy_wrapper.hpp" namespace "py_rocks":
             string,
             void*,
             create_filter_func,
-            key_may_match_func) nogil except+
+            key_may_match_func) except+ nogil
 
-        void set_info_log(shared_ptr[Logger]) nogil except+
+        void set_info_log(shared_ptr[Logger]) except+ nogil
