@@ -142,7 +142,6 @@ cdef extern from "rocksdb/options.h" namespace "rocksdb":
         size_t db_write_buffer_size
         # TODO shared_ptr[WriteBufferManager] write_buffer_manager
         AccessHint access_hint_on_compaction_start
-        cpp_bool new_table_reader_for_compaction_inputs
         size_t compaction_readahead_size
         size_t random_access_max_buffer_size
         size_t writable_file_max_buffer_size
@@ -175,7 +174,6 @@ cdef extern from "rocksdb/options.h" namespace "rocksdb":
         cpp_bool avoid_flush_during_recovery
         cpp_bool avoid_flush_during_shutdown
         cpp_bool allow_ingest_behind
-        cpp_bool preserve_deletes
         cpp_bool two_write_queues
         cpp_bool manual_wal_flush
         cpp_bool atomic_flush
